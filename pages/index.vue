@@ -3,21 +3,16 @@
     <Navbar/>
     <section 
       id="loop" 
-      class="section has-text-light">
-      <div class="container">
-        <div class="columns is-multiline">
-          <div 
-            v-for="item in articles" 
-            :key="item.id" 
-            class="column is-4">
-            <Card                
-              :image="item.artikelImage" 
-              :title="item.artikelName" 
-              :link="'../'+item.id"
-            />
-          </div>
-        </div>
-      </div>
+      class="section has-text-light has-text-centered">
+      <h2>Stories</h2>
+      <TextCard  
+        v-for="item in articles" 
+        :key="item.id"               
+        :image="item.artikelImage" 
+        :title="item.artikelName" 
+        :link="'../'+item.id"
+      />
+
     </section>
     
   </div>
@@ -27,10 +22,11 @@
 import Navbar from '@/components/Navbar.vue'
 import Logo from '@/components/Logo'
 import Card from '@/components/Card'
+import TextCard from '@/components/TextCard'
 import { fireDb } from '@/plugins/firebase.js'
 export default {
   name: 'HomePage',
-  components: { Navbar, Logo, Card },
+  components: { Navbar, Logo, Card, TextCard },
   data() {
     return {}
   },
@@ -53,8 +49,17 @@ export default {
 </script>
 
 <style scoped>
+.hero {
+  background-image: url('https://firebasestorage.googleapis.com/v0/b/shottas-24a2b.appspot.com/o/site%2Fshottas_pattern.svg?alt=media&token=c76cbd3d-a21b-44a6-bc03-b89a46a4c0be');
+  background-repeat: repeat;
+  background-size: 55px !important;
+  background-color: #1e1e1e;
+}
 #loop {
-  background-color: #151515;
+  background-image: url('https://firebasestorage.googleapis.com/v0/b/shottas-24a2b.appspot.com/o/site%2Fshottas_pattern.svg?alt=media&token=c76cbd3d-a21b-44a6-bc03-b89a46a4c0be');
+  background-repeat: repeat;
+  background-size: 55px !important;
+  background-color: #1e1e1e;
   padding-top: 1.5em;
 }
 </style>

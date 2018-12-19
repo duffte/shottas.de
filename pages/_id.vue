@@ -30,26 +30,24 @@
     </section>
     <section 
       :v-if="related" 
-      class="section has-background-light">
-      <div class="container">        
-        <div class="columns">
-          <BaseArticle 
-            v-for="item in artikel" 
-            :key="item.id" 
-            :image="item.artikelImage" 
-            :title="item.artikelName" 
-            :link="'../'+item.id"/>
-        </div>
-      </div>
+      class="section has-text-light has-text-centered">
+      Mehr Stories
+      <TextCard 
+        v-for="item in related"
+        :key="item.id" 
+        :image="item.artikelImage" 
+        :title="item.artikelName" 
+        :link="'../'+item.id" />
     </section>
   </div>
 </template>
 
 <script>
+import TextCard from '@/components/TextCard'
 import { fireDb } from '~/plugins/firebase.js'
 import NavbarSingle from '@/components/NavbarSingle.vue'
 export default {
-  components: { NavbarSingle },
+  components: { NavbarSingle, TextCard },
   head() {
     return {
       title: this.data.data.artikelName,
@@ -158,7 +156,7 @@ export default {
   background-color: #151515 !important;
 }
 .block:first-child {
-  margin-top: 4.5em;
+  margin-top: 1.5em;
 }
 .block:last-child {
   margin-bottom: 4.5em;

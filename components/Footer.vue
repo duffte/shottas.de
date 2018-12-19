@@ -1,15 +1,15 @@
 <template>
-  <footer class="">
+  <footer class="has-background-transparent">
     <div class="section">
       <div class="container">
         <div class="columns">          
-          <div class="column is-8 is-offset-2 has-text-centered has-text-light">
+          <div class="column is-8 is-offset-2 has-text-centered has-text-dark">
             <div class="block">
               <b-icon 
                 icon="copyright"
                 size="is-small"/>
               <img 
-                src="@/assets/shottas_w.svg" 
+                src="@/assets/shottas_b.svg" 
                 alt="shottas"
                 class="footer-logo"> 201x
             </div>
@@ -25,6 +25,9 @@ export default {}
 </script>
 
 <style>
+.has-background-transparent {
+  background: #ffffff00;
+}
 footer {
   padding: 0 2em;
   margin-top: 1em;

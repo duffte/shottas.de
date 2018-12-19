@@ -40,7 +40,8 @@ export default {
 
 <style>
 .card {
-  padding: 1em;
+  background: #ff3860;
+  padding: 0.25em;
   margin-bottom: 1.5em;
   box-shadow: 2px 2px 30px 2px #00000070;
 }
