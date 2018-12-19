@@ -5,17 +5,15 @@
     <!-- Hero head: will stick at the top -->
     <div class="hero-head">
       <header class="navbar">
-        <div class="container">
-          <div class="navbar-brand is-centered">
-            <a class="navbar-item is-invisible">
-              <Logo/>
-            </a>
-            <nuxt-link 
-              to="/" 
-              class="zuruck navbar-item button is-danger is-rounded is-medium">
-              zurüüück
-            </nuxt-link>
-          </div>
+        <div class="navbar-brand">
+          <a class="navbar-item is-invisible">
+            <Logo/>
+          </a>
+          <nuxt-link 
+            to="/" 
+            class="zuruck navbar-item button is-danger is-rounded is-medium">
+            zurüüück
+          </nuxt-link>
         </div>
       </header>
     </div>
