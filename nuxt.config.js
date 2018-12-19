@@ -1,4 +1,4 @@
-//import { fireDb } from './plugins/firebase.js'
+import { fireDb } from './plugins/firebase.js'
 const pkg = require('./package')
 
 module.exports = {
