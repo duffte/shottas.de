@@ -1,13 +1,20 @@
 <template>
-  <section class="hero is-fullheight">
+  <section 
+    :style="style" 
+    class="hero is-dark is-fullheight">
     <!-- Hero head: will stick at the top -->
-    <div class="hero-head is-invisible">
+    <div class="hero-head">
       <header class="navbar">
         <div class="container">
           <div class="navbar-brand is-centered">
-            <a class="navbar-item">
+            <a class="navbar-item is-invisible">
               <Logo/>
             </a>
+            <nuxt-link 
+              to="/" 
+              class="navbar-item">
+              zurüüück
+            </nuxt-link>
           </div>
         </div>
       </header>
@@ -52,12 +59,30 @@
         </div>
         <h1 class="title">
           <Logo/>
+          in <br>
+          {{ title }}          
         </h1>
+        <b-icon
+          icon="calendar-range"
+          size="is-small"/> {{ date }} <b-icon
+            icon="timer"
+            size="is-small"/> Lesedauer: {{ timeToRead }} Minute(n)
+        <div class="has-text-centered"> 
+          <div class="author">
+            <figure class="image is-centered is-48x48">
+              <img 
+                :src="autor.autorImage" 
+                class="is-rounded authorImage">
+            </figure>
+          </div>
+        </div>
+        
         <b-icon
           icon="chevron-down"
           size="is-large"
           type="is-danger"/>
       </div>
+
     </div>
 
   </section>
@@ -69,18 +94,31 @@ export default {
   components: {
     Logo
   },
+  props: {
+    title: { type: String, default: 'hehe' },
+    image: { type: String, default: 'hehe' },
+    autor: { type: Object, default: () => {} },
+    timetoread: { type: String, default: '5' },
+    date: { type: String, default: '123' }
+  },
   data() {
     return {}
+  },
+  computed: {
+    style() {
+      return 'background-image: url("' + this.image + '")'
+    }
   }
 }
 </script>
 
-<style scoped>
+<style>
+.author .image {
+  margin-top: 1em;
+}
 .hero.is-dark,
 .has-background-dark {
-  background-image: url('https://firebasestorage.googleapis.com/v0/b/shottas-24a2b.appspot.com/o/site%2Fshottas_pattern.svg?alt=media&token=c76cbd3d-a21b-44a6-bc03-b89a46a4c0be');
-  background-repeat: repeat;
-  background-size: 55px !important;
+  background-size: cover;
 }
 .hero.is-dark a.navbar-item:hover {
   background-color: #ffffff00 !important;

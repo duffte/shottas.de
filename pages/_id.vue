@@ -1,73 +1,31 @@
 <template>
-  <div>
-    <section class="section">
-      <div class="container">
-        <div class="columns">
-          <article>          
-
-            <header class="column is-12 content">  
-              <div class="columns">
-                <div class="column is-6">
-                  <h1>
-                    {{ data.data.artikelName }}
-                  </h1>                            
-                  <p class="subtitle">
-                    {{ data.data.artikelExcerpt }}
-                  </p>
-                  <span><b-icon
-                    icon="calendar-range"
-                    size="is-small"/> {{ theDate }} <b-icon
-                      icon="timer"
-                      size="is-small"/> Lesedauer: {{ data.data.timeToRead }} Minute(n)</span>
-                  <hr>
-                  <nuxt-link to="/autoren/">
-                    <div class="author media">
-                      <figure class="media-left">
-                        <p class="image is-48x48">
-                          <img 
-                            :src="data.data.artikelAutor.autorImage" 
-                            class="is-rounded authorImage">
-                        </p>
-                      </figure>
-                      <div class="media-content">
-                        <div class="content">
-                          <span class="author-top">Geschrieben von</span>
-                          <p class="author-name">{{ data.data.artikelAutor.autorName }}</p>
-                        </div>
-                      </div>
-                    </div>
-                  </nuxt-link>
-                </div>
-                <div class="column is-6">
-                  <img 
-                    :src="data.data.artikelImage" 
-                    class="image">
-                </div>
-              </div>
-            </header>
-            <br>
-
-            <section 
-              id="blocks" 
-              class="content">                      
-              <div 
-                v-for="(item) in data.blocks" 
-                :key="item.id" 
-                class="has-text-dark block">                          
-                <figure 
-                  v-if="item.type == 'image'" 
-                  class="figure column is-10 is-offset-1">
-                  <img :src="item.src">
-                  <figcaption>{{ item.caption }}</figcaption>
-                </figure>
-                <div 
-                  v-else-if="item.type == 'text'" 
-                  class="column is-8 is-offset-2" 
-                  v-html="$md.render(item.content)"/>                
-              </div>
-            </section>  
-          </article>
-        </div>               
+  <div class="has-background-light">
+    <NavbarSingle 
+      :title="data.data.artikelName" 
+      :image="data.data.artikelImage"
+      :autor="data.data.artikelAuthor"/>
+    <section 
+      class="section">
+      <div class="container">                 
+        <section 
+          id="blocks" 
+          class="content">                      
+          <div 
+            v-for="(item) in data.blocks" 
+            :key="item.id" 
+            class="has-text-dark block columns">                          
+            <figure 
+              v-if="item.type == 'image'" 
+              class="figure column is-10 is-offset-1">
+              <img :src="item.src">
+              <figcaption>{{ item.caption }}</figcaption>
+            </figure>
+            <div 
+              v-else-if="item.type == 'text'" 
+              class="column is-8 is-offset-2" 
+              v-html="$md.render(item.content)"/>                
+          </div>
+        </section>              
       </div>
     </section>
     <section 
@@ -78,10 +36,9 @@
           <BaseArticle 
             v-for="item in artikel" 
             :key="item.id" 
-            :author="item.autor" 
             :image="item.artikelImage" 
             :title="item.artikelName" 
-            :single-link="'../'+item.id"/>
+            :link="'../'+item.id"/>
         </div>
       </div>
     </section>
@@ -90,8 +47,9 @@
 
 <script>
 import { fireDb } from '~/plugins/firebase.js'
-
+import NavbarSingle from '@/components/NavbarSingle.vue'
 export default {
+  components: { NavbarSingle },
   head() {
     return {
       title: this.data.data.artikelName,
@@ -196,6 +154,15 @@ export default {
 </script>
 
 <style scoped>
+.block:first-child {
+  margin-top: 4.5em;
+}
+.block:last-child {
+  margin-bottom: 4.5em;
+}
+content {
+  font-size: 21px;
+}
 img {
   width: 100%;
 }

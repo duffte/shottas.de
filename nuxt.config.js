@@ -1,3 +1,4 @@
+//import { fireDb } from './plugins/firebase.js'
 const pkg = require('./package')
 
 module.exports = {
@@ -22,6 +23,12 @@ module.exports = {
     ]
   },
 
+  router: {
+    scrollBehavior: function(to, from, savedPosition) {
+      return { x: 0, y: 0 }
+    }
+  },
+
   /*
   ** Customize the progress-bar color
   */
@@ -35,17 +42,29 @@ module.exports = {
   /*
   ** Plugins to load before mounting the App
   */
-  plugins: [],
+  plugins: ['~/plugins/firebase.js', '~/plugins/md-it'],
 
   /*
   ** Nuxt.js modules
   */
   modules: [
-    ,
     // Doc: https://buefy.github.io/#/documentation
-    'nuxt-buefy'
+    'nuxt-buefy',
+    '@nuxtjs/markdownit'
   ],
 
+  generate: {
+    routes: async () => {
+      let routes = []
+      //symptome
+      const artikel = fireDb.collection('artikel')
+      const artikelCollection = await artikel.get()
+      for (const doc of artikelCollection.docs) {
+        routes.push(`/${doc.data().data.id}`)
+      }
+      return routes
+    }
+  },
   /*
   ** Build configuration
   */
