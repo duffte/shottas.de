@@ -1,16 +1,20 @@
 <template>
   <div>
     <Navbar/>
-    <section class="section has-text-light">
+    <section 
+      id="loop" 
+      class="section has-text-light">
       <div class="container">
         <div class="columns is-multiline">
-          <div class="column is-8 is-offset-2">
-            <Card 
-              v-for="item in articles" 
+          <div 
+            v-for="item in articles" 
+            :key="item.id" 
+            class="column is-4">
+            <Card                
               :image="item.artikelImage" 
               :title="item.artikelName" 
               :link="'../'+item.id"
-              :key="item.id"/>
+            />
           </div>
         </div>
       </div>
@@ -49,4 +53,8 @@ export default {
 </script>
 
 <style scoped>
+#loop {
+  background-color: #151515;
+  padding-top: 1.5em;
+}
 </style>

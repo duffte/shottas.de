@@ -12,7 +12,7 @@
             </a>
             <nuxt-link 
               to="/" 
-              class="navbar-item">
+              class="zuruck navbar-item button is-danger is-rounded is-medium">
               zurüüück
             </nuxt-link>
           </div>
@@ -113,6 +113,9 @@ export default {
 </script>
 
 <style>
+.zuruck {
+  margin-top: 1.5em;
+}
 .author .image {
   margin-top: 1em;
 }

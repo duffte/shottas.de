@@ -25,6 +25,10 @@ export default {}
 </script>
 
 <style>
+footer {
+  padding: 0 2em;
+  margin-top: 1em;
+}
 footer .column:first-child {
   display: flex;
   flex-direction: column;

@@ -8,7 +8,7 @@
 
 <style>
 .is-logo {
-  width: 400px;
+  max-width: 400px;
   height: auto;
 }
 </style>

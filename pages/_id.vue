@@ -1,5 +1,5 @@
 <template>
-  <div class="has-background-light">
+  <div class="has-background-dark has-text-light">
     <NavbarSingle 
       :title="data.data.artikelName" 
       :image="data.data.artikelImage"
@@ -13,7 +13,7 @@
           <div 
             v-for="(item) in data.blocks" 
             :key="item.id" 
-            class="has-text-dark block columns">                          
+            class="block columns">                          
             <figure 
               v-if="item.type == 'image'" 
               class="figure column is-10 is-offset-1">
@@ -154,13 +154,16 @@ export default {
 </script>
 
 <style scoped>
+.has-background-dark {
+  background-color: #151515 !important;
+}
 .block:first-child {
   margin-top: 4.5em;
 }
 .block:last-child {
   margin-bottom: 4.5em;
 }
-content {
+.content {
   font-size: 21px;
 }
 img {
