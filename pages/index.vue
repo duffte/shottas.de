@@ -27,8 +27,63 @@ import { fireDb } from '@/plugins/firebase.js'
 export default {
   name: 'HomePage',
   components: { Navbar, Logo, Card, TextCard },
+  head() {
+    return {
+      meta: [
+        // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+        {
+          hid: 'description',
+          name: 'description',
+          content:
+            'Foto- und Videodienstleistungsgesellschaftsunternehhaltdiefresse'
+        },
+        //facebook
+        {
+          hid: 'ogtitle',
+          property: 'og:title',
+          content: 'Shottas.de - Get Shot'
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: 'Startseite'
+        },
+        { hid: 'og:type', property: 'og:type', content: 'website' },
+        {
+          hid: 'og:image',
+          property: 'og:image',
+          content: this.image
+        },
+        //twitter
+        { hid: 'twitter:card', name: 'twitter:card', content: 'summary' },
+        { hid: 'twitter:site', name: 'twitter:site', content: '@supphero' },
+        {
+          hid: 'twitter:title',
+          name: 'twitter:title',
+          content: 'Shottas.de - Get Shot'
+        },
+        {
+          hid: 'twitter:description',
+          name: 'twitter:description',
+          content: 'Startseite'
+        },
+        {
+          hid: 'twitter:image',
+          name: 'twitter:image',
+          content: this.image
+        },
+        {
+          hid: 'twitter:image:alt',
+          name: 'twitter:image:alt',
+          content: 'Shottas.de - Get Shot'
+        }
+      ]
+    }
+  },
   data() {
-    return {}
+    return {
+      image: '~/assets/shottas_w.svg'
+    }
   },
   async asyncData({ app, params, error }) {
     let artikelCollection = []
