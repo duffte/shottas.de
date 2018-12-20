@@ -1,9 +1,11 @@
 <template>
-  <div class="has-background-dark has-text-light">
+  <div class="has-background-white">
     <NavbarSingle 
       :title="data.data.artikelName" 
       :image="data.data.artikelImage"
-      :autor="data.data.artikelAuthor"/>
+      :autor="data.data.artikelAuthor"
+      :date="theDate"
+      :timetoread="data.data.timeToRead"/>
     <section 
       class="section">
       <div class="container">                 
@@ -16,13 +18,13 @@
             class="block columns">                          
             <figure 
               v-if="item.type == 'image'" 
-              class="figure column is-10 is-offset-1">
+              class="figure column is-10 is-offset-1 block-image">
               <img :src="item.src">
               <figcaption>{{ item.caption }}</figcaption>
             </figure>
             <div 
               v-else-if="item.type == 'text'" 
-              class="column is-8 is-offset-2" 
+              class="column is-8 is-offset-2 block-text" 
               v-html="$md.render(item.content)"/>                
           </div>
         </section>              
@@ -30,14 +32,14 @@
     </section>
     <section 
       :v-if="related" 
-      class="section has-text-light has-text-centered">
+      class="section has-text-centered">
       Mehr Stories
       <TextCard 
         v-for="item in related"
         :key="item.id" 
         :image="item.artikelImage" 
         :title="item.artikelName" 
-        :link="'../'+item.id" />
+        :link="'../'+item.id"/>
     </section>
   </div>
 </template>
@@ -152,6 +154,13 @@ export default {
 </script>
 
 <style scoped>
+.block {
+  display: block;
+}
+.block-text {
+  max-width: 512px;
+  margin: auto;
+}
 .has-background-dark {
   background-color: #151515 !important;
 }

@@ -24,7 +24,8 @@
         <div class="block">
           <a 
             href="https://www.instagram.com/shottas.de/" 
-            title="Instagram Shottas.de">
+            title="Instagram Shottas.de"
+            target="_blank">
             <b-icon
               icon="instagram"
               size="is-medium"
@@ -32,7 +33,8 @@
           </a>           
           <a 
             href="https://www.facebook.com/shottas.de/" 
-            title="Facebook Shottas.de">
+            title="Facebook Shottas.de"
+            target="_blank">
             <b-icon
               icon="facebook-box"
               size="is-medium"
@@ -40,7 +42,8 @@
           </a>
           <a 
             href="mailto:mail@shottas.de" 
-            title="E-Mail Shottas.de">
+            title="E-Mail Shottas.de"
+            target="_blank">
             <b-icon
               icon="email-outline"
               size="is-medium"
@@ -48,7 +51,8 @@
           </a>
           <a 
             href="https://discord.gg/S6HSdJ7" 
-            title="Discord Shottas.de">
+            title="Discord Shottas.de"
+            target="_blank">
             <b-icon
               icon="discord"
               size="is-medium"
@@ -64,7 +68,7 @@
           icon="calendar-range"
           size="is-small"/> {{ date }} <b-icon
             icon="timer"
-            size="is-small"/> Lesedauer: {{ timeToRead }} Minute(n)
+            size="is-small"/> Lesedauer: {{ timetoread }} Minute(n)
         <div class="has-text-centered"> 
           <div class="author">
             <figure class="image is-centered is-48x48">
@@ -120,9 +124,6 @@ export default {
 .hero.is-dark,
 .has-background-dark {
   background-size: cover;
-}
-.hero.is-dark a.navbar-item:hover {
-  background-color: #ffffff00 !important;
 }
 .navbar.is-dark {
   background-color: #000;

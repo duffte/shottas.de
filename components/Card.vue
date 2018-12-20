@@ -25,15 +25,6 @@ export default {
       type: String,
       default: 'Super Titel'
     }
-  },
-  computed: {
-    style() {
-      return (
-        'background-image: url("' +
-        this.image +
-        '"); background-position:center'
-      )
-    }
   }
 }
 </script>

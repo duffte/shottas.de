@@ -21,16 +21,13 @@ export default {
 html {
   background: #fff7f7;
 }
-.container {
-  max-width: 100%;
-}
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1600px) {
   body {
     margin: 0 !important;
   }
 }
 body {
-  max-width: 800px;
+  max-width: 1600px;
   margin: 2em auto;
 }
 section {

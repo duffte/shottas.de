@@ -19,7 +19,8 @@
         <div class="block">
           <a 
             href="https://www.instagram.com/shottas.de/" 
-            title="Instagram Shottas.de">
+            title="Instagram Shottas.de"
+            target="_blank">
             <b-icon
               icon="instagram"
               size="is-medium"
@@ -35,7 +36,8 @@
           </a>
           <a 
             href="mailto:mail@shottas.de" 
-            title="E-Mail Shottas.de">
+            title="E-Mail Shottas.de"
+            target="_blank">
             <b-icon
               icon="email-outline"
               size="is-medium"
@@ -43,7 +45,8 @@
           </a>
           <a 
             href="https://discord.gg/S6HSdJ7" 
-            title="Discord Shottas.de">
+            title="Discord Shottas.de"
+            target="_blank">
             <b-icon
               icon="discord"
               size="is-medium"
