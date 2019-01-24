@@ -145,4 +145,7 @@ export default {
 .block a {
   margin-right: 2em;
 }
+.block a:last-child {
+  margin-right: 0;
+}
 </style>

@@ -50,59 +50,6 @@ import { fireDb } from '~/plugins/firebase.js'
 import NavbarSingle from '@/components/NavbarSingle.vue'
 export default {
   components: { NavbarSingle, TextCard },
-  head() {
-    return {
-      title: this.data.data.artikelName,
-      meta: [
-        // hid is used as unique identifier. Do not use `vmid` for it as it will not work
-        {
-          hid: 'description',
-          name: 'description',
-          content: this.data.data.artikelShort
-        },
-        //facebook
-        {
-          hid: 'ogtitle',
-          property: 'og:title',
-          content: this.data.data.artikelName
-        },
-        {
-          hid: 'og:description',
-          property: 'og:description',
-          content: this.data.data.artikelShort
-        },
-        { hid: 'og:type', property: 'og:type', content: 'website' },
-        {
-          hid: 'og:image',
-          property: 'og:image',
-          content: this.data.data.artikelImage
-        },
-        //twitter
-        { hid: 'twitter:card', name: 'twitter:card', content: 'summary' },
-        { hid: 'twitter:site', name: 'twitter:site', content: '@supphero' },
-        {
-          hid: 'twitter:title',
-          name: 'twitter:title',
-          content: this.data.data.artikelName
-        },
-        {
-          hid: 'twitter:description',
-          name: 'twitter:description',
-          content: this.data.data.artikelShort
-        },
-        {
-          hid: 'twitter:image',
-          name: 'twitter:image',
-          content: this.data.data.artikelImage
-        },
-        {
-          hid: 'twitter:image:alt',
-          name: 'twitter:image:alt',
-          content: this.data.data.artikelName
-        }
-      ]
-    }
-  },
   scrollToTop: true,
   data() {
     return {

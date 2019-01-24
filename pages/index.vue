@@ -1,21 +1,23 @@
 <template>
-  <div>
-    <Navbar/>
-    <section 
-      id="loop" 
-      class="section has-text-light has-text-centered">
-      <h2>Stories</h2>
-      <TextCard  
-        v-for="item in articles" 
-        :key="item.id"               
-        :image="item.artikelImage" 
-        :title="item.artikelName" 
-        :link="'../'+item.id"
-      />
-
-    </section>
-    
-  </div>
+  <section>
+    <no-ssr>
+      <div 
+        v-masonry 
+        transition-duration=".25s" 
+        item-selector=".item" 
+        class="masonry-container">
+        <div 
+          v-masonry-tile 
+          v-for="(item, index) in articles" 
+          :key="index" 
+          class="item">
+          <Card 
+            :item="item" 
+          />
+        </div>
+      </div>
+    </no-ssr>
+  </section>
 </template>
 
 <script>
@@ -27,62 +29,9 @@ import { fireDb } from '@/plugins/firebase.js'
 export default {
   name: 'HomePage',
   components: { Navbar, Logo, Card, TextCard },
-  head() {
-    return {
-      meta: [
-        // hid is used as unique identifier. Do not use `vmid` for it as it will not work
-        {
-          hid: 'description',
-          name: 'description',
-          content:
-            'Foto- und Videodienstleistungsgesellschaftsunternehhaltdiefresse'
-        },
-        //facebook
-        {
-          hid: 'ogtitle',
-          property: 'og:title',
-          content: 'Shottas.de - Get Shot'
-        },
-        {
-          hid: 'og:description',
-          property: 'og:description',
-          content: 'Startseite'
-        },
-        { hid: 'og:type', property: 'og:type', content: 'website' },
-        {
-          hid: 'og:image',
-          property: 'og:image',
-          content: this.image
-        },
-        //twitter
-        { hid: 'twitter:card', name: 'twitter:card', content: 'summary' },
-        { hid: 'twitter:site', name: 'twitter:site', content: '@supphero' },
-        {
-          hid: 'twitter:title',
-          name: 'twitter:title',
-          content: 'Shottas.de - Get Shot'
-        },
-        {
-          hid: 'twitter:description',
-          name: 'twitter:description',
-          content: 'Startseite'
-        },
-        {
-          hid: 'twitter:image',
-          name: 'twitter:image',
-          content: this.image
-        },
-        {
-          hid: 'twitter:image:alt',
-          name: 'twitter:image:alt',
-          content: 'Shottas.de - Get Shot'
-        }
-      ]
-    }
-  },
   data() {
     return {
-      image: '~/assets/shottas_w.svg'
+      image: '~/assets/shottas_b.svg'
     }
   },
   async asyncData({ app, params, error }) {
@@ -105,16 +54,17 @@ export default {
 
 <style scoped>
 .hero {
-  background-image: url('https://firebasestorage.googleapis.com/v0/b/shottas-24a2b.appspot.com/o/site%2Fshottas_pattern.svg?alt=media&token=c76cbd3d-a21b-44a6-bc03-b89a46a4c0be');
-  background-repeat: repeat;
-  background-size: 55px !important;
-  background-color: #1e1e1e;
+  background-color: #5800e1;
+  color: #fff598 !important;
 }
 #loop {
-  background-image: url('https://firebasestorage.googleapis.com/v0/b/shottas-24a2b.appspot.com/o/site%2Fshottas_pattern.svg?alt=media&token=c76cbd3d-a21b-44a6-bc03-b89a46a4c0be');
-  background-repeat: repeat;
-  background-size: 55px !important;
-  background-color: #1e1e1e;
-  padding-top: 1.5em;
+  background-color: #5800e1;
+}
+.has-text-primary {
+  color: #fff598 !important;
+}
+.item {
+  width: 50%;
+  height: 50vh;
 }
 </style>

@@ -1,29 +1,28 @@
 <template>
-  <nuxt-link :to="link">
-    <div class="card has-shadow">
-      <div class="card-image">
-        <figure 
-          :style="style" 
-          class="image is-1by1"/>
-      </div>    
-    </div>
+  <nuxt-link :to="item.id">
+    <figure 
+      :style="style" 
+      class="image is-1by1"/>
   </nuxt-link>
 </template>
 
 <script>
 export default {
   props: {
-    link: {
-      type: String,
-      default: '../hehe'
-    },
-    image: {
-      type: String,
-      default: 'https://bulma.io/images/placeholders/1280x960.png'
-    },
-    title: {
-      type: String,
-      default: 'Super Titel'
+    item: {
+      type: Object,
+      default: () => {
+        return {
+          id: '123',
+          image: 'https://bulma.io/images/placeholders/1280x960.png',
+          title: 'hehe'
+        }
+      }
+    }
+  },
+  computed: {
+    style() {
+      return 'background-image: url("' + this.item.artikelImage + '")'
     }
   }
 }

@@ -31,6 +31,6 @@ export default {
 }
 a.TextCard {
   text-decoration: underline;
-  color: #ff3860 !important;
+  color: #fff598 !important;
 }
 </style>

@@ -1,111 +1,94 @@
 <template>
-  <section class="hero is-fullheight">
-    <!-- Hero head: will stick at the top -->
-    <div class="hero-head is-invisible">
-      <header class="navbar">
-        <div class="container">
-          <div class="navbar-brand is-centered">
-            <a class="navbar-item">
-              <Logo/>
-            </a>
-          </div>
-        </div>
-      </header>
-    </div>
-
-    <!-- Hero content: will be in the middle -->
-    <div class="hero-body">
-      <div class="container has-text-centered is-centered">
-        <div class="block">
-          <a 
-            href="https://www.instagram.com/shottas.de/" 
-            title="Instagram Shottas.de"
-            target="_blank">
-            <b-icon
-              icon="instagram"
-              size="is-medium"
-              type="is-danger"/>
-          </a>           
-          <a 
-            href="https://www.facebook.com/shottas.de/" 
-            title="Facebook Shottas.de">
-            <b-icon
-              icon="facebook-box"
-              size="is-medium"
-              type="is-danger"/>
-          </a>
-          <a 
-            href="mailto:mail@shottas.de" 
-            title="E-Mail Shottas.de"
-            target="_blank">
-            <b-icon
-              icon="email-outline"
-              size="is-medium"
-              type="is-danger"/>
-          </a>
-          <a 
-            href="https://discord.gg/S6HSdJ7" 
-            title="Discord Shottas.de"
-            target="_blank">
-            <b-icon
-              icon="discord"
-              size="is-medium"
-              type="is-danger"/>
-          </a>
-        </div>
-        <h1 class="title">
+  <nav 
+    id="nav" 
+    class="navbar is-dark" 
+    role="navigation" 
+    aria-label="main navigation">
+    <div class="container">      
+      <div class="navbar-brand">
+        <a 
+          :class="{ 'is-active': showNav }" 
+          role="button" 
+          class="navbar-burger burger" 
+          @click="showNav = !showNav">
+          <span aria-hidden="true"/>
+          <span aria-hidden="true"/>
+          <span aria-hidden="true"/>
+        </a>
+        <nuxt-link 
+          :to="localePath('index')" 
+          class="navbar-item">
           <Logo/>
-        </h1>
-        <b-icon
-          icon="chevron-down"
-          size="is-large"
-          type="is-danger"/>
+        </nuxt-link>        
       </div>
-    </div>
+      <div 
+        id="navbarToggle" 
+        :class="{ 'is-active': showNav }" 
+        class="navbar-menu">
+        <div class="navbar-start">
 
-  </section>
+          <nuxt-link 
+            :to="localePath('car')" 
+            class="navbar-item">{{ $t('stories') }}</nuxt-link>
+
+          <nuxt-link 
+            :to="localePath('compare')" 
+            class="navbar-item">{{ $t('shop') }}</nuxt-link>
+
+          <nuxt-link 
+            :to="localePath('about')" 
+            class="navbar-item">{{ $t('shottas') }}</nuxt-link>
+
+          <nuxt-link 
+            :to="localePath('contact')" 
+            class="navbar-item">{{ $t('contact') }}</nuxt-link>
+          <LanguageSwitcher/>
+        </div>
+      </div> 
+    </div> 
+  </nav>
 </template>
 
 <script>
-import Logo from '@/components/Logo.vue'
+import LanguageSwitcher from '@/components/LanguageSwitcher'
+import Logo from '@/components/Logo'
 export default {
-  components: {
-    Logo
-  },
+  components: { LanguageSwitcher, Logo },
   data() {
-    return {}
+    return {
+      showNav: false
+    }
   }
 }
 </script>
 
-<style scoped>
-.hero.is-dark,
-.has-background-dark {
-  background-image: url('https://firebasestorage.googleapis.com/v0/b/shottas-24a2b.appspot.com/o/site%2Fshottas_pattern.svg?alt=media&token=c76cbd3d-a21b-44a6-bc03-b89a46a4c0be');
-  background-repeat: repeat;
-  background-size: 55px !important;
-}
-.hero.is-dark a.navbar-item:hover {
-  background-color: #ffffff00 !important;
-}
-.navbar.is-dark {
-  background-color: #000;
-}
+<style>
 .navbar-brand {
-  display: flex;
   align-items: center;
+  display: flex;
 }
-.is-centered {
-  margin: auto;
-  flex: 1;
-  justify-content: center;
+.navbar-burger {
+  background: white;
+  border-radius: 50%;
 }
-@media screen and (max-width: 1087px) {
-  .navbar > .container {
-    display: flex;
+.navbar {
+  background-color: white;
+  min-height: 10rem;
+  position: relative;
+  z-index: 30;
+}
+.navbar-brand,
+.navbar-tabs {
+  min-height: 10rem;
+}
+
+@media screen and (min-width: 1088px) {
+  .navbar.is-dark .navbar-start > .navbar-item,
+  .navbar.is-dark .navbar-start .navbar-link,
+  .navbar.is-dark .navbar-end > .navbar-item,
+  .navbar.is-dark .navbar-end .navbar-link {
+    color: whitesmoke;
+    font-size: 1.5em;
   }
-}
-.block a {
-  margin-right: 2em;
 }
 </style>

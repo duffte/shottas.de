@@ -1,14 +1,16 @@
 <template>
-  <div class="is-logo is-centered">
+  <div class="is-centered">
     <img 
       src="~/assets/shottas_w.svg" 
-      alt="Shottas">
+      alt="Shottas"
+      class="is-logo">
   </div>
 </template>
 
 <style>
 .is-logo {
-  max-width: 400px;
-  height: auto;
+  min-height: 3.5em;
+  max-width: 600px;
+  height: 3.5em;
 }
 </style>
