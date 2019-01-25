@@ -28,21 +28,22 @@
         <div class="navbar-start">
 
           <nuxt-link 
-            :to="localePath('car')" 
-            class="navbar-item">{{ $t('stories') }}</nuxt-link>
+            :to="localePath('stories')" 
+            class="navbar-item">{{ $t('stories.title') }}</nuxt-link>
 
           <nuxt-link 
-            :to="localePath('compare')" 
-            class="navbar-item">{{ $t('shop') }}</nuxt-link>
+            :to="localePath('shop')" 
+            class="navbar-item">{{ $t('shop.title') }}</nuxt-link>
 
           <nuxt-link 
             :to="localePath('about')" 
-            class="navbar-item">{{ $t('shottas') }}</nuxt-link>
+            class="navbar-item">{{ $t('about.title') }}</nuxt-link>
 
           <nuxt-link 
             :to="localePath('contact')" 
-            class="navbar-item">{{ $t('contact') }}</nuxt-link>
+            class="navbar-item">{{ $t('contact.title') }}</nuxt-link>
           <LanguageSwitcher/>
+          <UserProfile/>
         </div>
       </div> 
     </div> 
@@ -50,10 +51,12 @@
 </template>
 
 <script>
-import LanguageSwitcher from '@/components/LanguageSwitcher'
-import Logo from '@/components/Logo'
 export default {
-  components: { LanguageSwitcher, Logo },
+  components: {
+    LanguageSwitcher: () => import('@/components/LanguageSwitcher'),
+    Logo: () => import('@/components/Logo'),
+    UserProfile: () => import('@/components/UserProfile')
+  },
   data() {
     return {
       showNav: false

@@ -2,8 +2,8 @@
   <div>
     <Navbar/>
     <transition
-      name="fade"
-      mode="out-in"
+      name="tray"
+      mode="in-out"
     >
       <nuxt />
     </transition>
@@ -11,15 +11,17 @@
 </template>
 
 <script>
-import Navbar from '@/components/Navbar.vue'
-import Footer from '@/components/Footer.vue'
 export default {
   components: {
-    Navbar,
-    Footer
+    Navbar: () => import('@/components/Navbar.vue'),
+    Footer: () => import('@/components/Footer.vue')
   },
   data() {
     return {}
+  },
+  transition(to, from) {
+    if (!from) return 'slide-left'
+    return +to.query.page < +from.query.page ? 'slide-right' : 'slide-left'
   }
 }
 </script>
@@ -38,18 +40,14 @@ body {
   margin: 2em auto;
 }
 
-.fade-enter-active,
-.fade-leave-active {
-  transition-duration: 0.3s;
-  transition-property: all;
-  transition-timing-function: ease;
+.slide-left-enter,
+.slide-right-leave-active {
+  opacity: 0;
+  transform: translate(30px, 0);
 }
-
-.fade-enter,
-.fade-leave-active {
-  transform: translateX(-100%);
-}
-.fade-enter {
-  transform: translateX(-100%);
+.slide-left-leave-active,
+.slide-right-enter {
+  opacity: 0;
+  transform: translate(-30px, 0);
 }
 </style>

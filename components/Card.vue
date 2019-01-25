@@ -1,8 +1,11 @@
 <template>
   <nuxt-link :to="item.id">
     <figure 
-      :style="style" 
-      class="image is-1by1"/>
+      class="image is-1by1">
+      <img 
+        v-lazy="item.artikelImage" 
+        :alt="title">
+    </figure>
   </nuxt-link>
 </template>
 

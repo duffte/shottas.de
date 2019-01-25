@@ -1,11 +1,11 @@
 <template>
   <div class="has-background-white">
     <NavbarSingle 
-      :title="data.data.artikelName" 
-      :image="data.data.artikelImage"
+      :image="data.data.artikelImage" 
       :autor="data.data.artikelAuthor"
       :date="theDate"
-      :timetoread="data.data.timeToRead"/>
+      :timetoread="data.data.timeToRead"
+      title="heheeee"/>
     <section 
       class="section">
       <div class="container">                 
@@ -19,13 +19,13 @@
             <figure 
               v-if="item.type == 'image'" 
               class="figure column is-10 is-offset-1 block-image">
-              <img :src="item.src">
+              <img v-lazy="item.src">
               <figcaption>{{ item.caption }}</figcaption>
             </figure>
             <div 
               v-else-if="item.type == 'text'" 
-              class="column is-8 is-offset-2 block-text" 
-              v-html="$md.render(item.content)"/>                
+              class="column is-8 is-offset-2 block-text"
+              v-html="$md.render(item.content)"/>
           </div>
         </section>              
       </div>
@@ -45,11 +45,12 @@
 </template>
 
 <script>
-import TextCard from '@/components/TextCard'
 import { fireDb } from '~/plugins/firebase.js'
-import NavbarSingle from '@/components/NavbarSingle.vue'
 export default {
-  components: { NavbarSingle, TextCard },
+  components: {
+    NavbarSingle: () => import('@/components/NavbarSingle.vue'),
+    TextCard: () => import('@/components/TextCard.vue')
+  },
   scrollToTop: true,
   data() {
     return {
@@ -58,27 +59,16 @@ export default {
       image: '@/assets/shottas_b.svg'
     }
   },
-  async asyncData({ app, params, error }) {
+  async asyncData({ app, params, error, store }) {
+    var language = store.state.i18n.locale
     let news = await fireDb
       .collection('artikel')
       .doc(params.id)
       .get()
 
-    var related = []
-    let rel = await fireDb
-      .collection('artikel')
-      .limit(3)
-      .get()
-      .then(querySnapshot => {
-        querySnapshot.forEach(doc => {
-          related.push(doc.data().data)
-        })
-      })
-
     if (news.data()) {
       return {
-        data: news.data(),
-        related: related
+        data: news.data()
       }
     } else {
       error({ statusCode: 404, message: 'Post not found' })

@@ -23,9 +23,11 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    { src: '~/plugins/fireauth.js', ssr: false },
     '~/plugins/firebase.js',
     '~/plugins/md-it',
-    { src: '~/plugins/vue-masonry', ssr: false }
+    { src: '~plugins/i18n.js' },
+    { src: '~/plugins/lazyload', ssr: false }
   ],
 
   /*
@@ -34,7 +36,6 @@ module.exports = {
   modules: [
     // Doc: https://buefy.github.io/#/documentation
     'nuxt-buefy',
-    '@nuxtjs/markdownit',
     [
       'nuxt-i18n',
       {
@@ -148,7 +149,7 @@ module.exports = {
           },
           _id: {
             de: '/:id?',
-            en: 'en/:id?'
+            en: '/:id?'
           }
         },
 

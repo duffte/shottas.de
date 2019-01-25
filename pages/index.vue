@@ -1,13 +1,8 @@
 <template>
   <section>
     <no-ssr>
-      <div 
-        v-masonry 
-        transition-duration=".25s" 
-        item-selector=".item" 
-        class="masonry-container">
+      <div>
         <div 
-          v-masonry-tile 
           v-for="(item, index) in articles" 
           :key="index" 
           class="item">
@@ -21,14 +16,15 @@
 </template>
 
 <script>
-import Navbar from '@/components/Navbar.vue'
-import Logo from '@/components/Logo'
-import Card from '@/components/Card'
-import TextCard from '@/components/TextCard'
 import { fireDb } from '@/plugins/firebase.js'
 export default {
   name: 'HomePage',
-  components: { Navbar, Logo, Card, TextCard },
+  components: {
+    Navbar: () => import('@/components/Navbar.vue'),
+    Logo: () => import('@/components/Logo.vue'),
+    Card: () => import('@/components/Card.vue'),
+    TextCard: () => import('@/components/TextCard.vue')
+  },
   data() {
     return {
       image: '~/assets/shottas_b.svg'
