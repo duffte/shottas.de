@@ -1,4 +1,3 @@
-import { fireDb } from './plugins/firebase.js'
 const pkg = require('./package')
 
 module.exports = {
@@ -54,8 +53,20 @@ module.exports = {
         //   { code: 'es', iso: 'es-ES', file: 'es.js' }
 
         locales: [
-          { code: 'en', iso: 'en-US', file: 'en-US.js', name: 'English' },
-          { code: 'de', iso: 'de-DE', file: 'de-DE.js', name: 'Deutsch' }
+          {
+            code: 'en',
+            iso: 'en-US',
+            file: 'en-US.js',
+            name: 'English',
+            flag: '../assets/flags/us.svg'
+          },
+          {
+            code: 'de',
+            iso: 'de-DE',
+            file: 'de-DE.js',
+            name: 'Deutsch',
+            flag: '../assets/flags/de.svg'
+          }
         ],
 
         // The app's default locale, URLs for this locale won't have a prefix if
